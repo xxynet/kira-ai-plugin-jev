@@ -1,0 +1,29 @@
+# Python and test artifacts
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.venv/
+venv/
+*.egg-info/
+build/
+dist/
+
+# Local credentials and runtime state
+.env
+.env.*
+!.env.example
+data/
+*.log
+*.log.*
+*.db
+*.sqlite
+*.sqlite3
+
+# Editor and OS files
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

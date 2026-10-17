@@ -1,0 +1,15 @@
+{
+    "display_name": "JEV Reply Trigger",
+    "plugin_id": "kira-ai-plugin-jev",
+    "core_version": ">=3.0.0",
+    "version": "1.2.1",
+    "author": "Caleb",
+    "description": "Judges every incoming message with TypeSafe's jev-latest System One model via its native API before the chat plugin runs, and marks messages worth replying to as mentioned.",
+    "tags": ["chat", "hook"],
+    "locales": {
+        "zh": {
+            "display_name": "JEV 回复判定",
+            "description": "在聊天插件之前，通过 TypeSafe 原生 System One 接口使用 jev-latest 模型判断每条收到的消息是否应该触发回复，需要回复时将 is_mentioned 置为 True。"
+        }
+    }
+}

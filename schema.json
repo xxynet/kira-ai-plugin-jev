@@ -1,0 +1,110 @@
+{
+  "api_key": {
+    "name": "TypeSafe API Key",
+    "type": "sensitive",
+    "default": "",
+    "hint": "API key from console.typesafe.ai/keys, used to call the TypeSafe System One API. Judging stays disabled until it is set.",
+    "locales": {
+      "zh": {
+        "name": "TypeSafe API Key",
+        "hint": "在 console.typesafe.ai/keys 获取的 API Key，用于调用 TypeSafe System One 接口。未配置时判定保持关闭。"
+      }
+    }
+  },
+  "base_url": {
+    "name": "API Base URL",
+    "type": "string",
+    "default": "https://api.typesafe.ai/v1",
+    "hint": "Base URL of the TypeSafe System One API.",
+    "locales": {
+      "zh": {
+        "name": "API 地址",
+        "hint": "TypeSafe System One 接口的基础地址。"
+      }
+    }
+  },
+  "model": {
+    "name": "Jev Model ID",
+    "type": "string",
+    "default": "jev-latest",
+    "hint": "TypeSafe model id sent in the System One request. This is a TypeSafe model id, NOT a KiraAI provider model.",
+    "locales": {
+      "zh": {
+        "name": "Jev 模型 ID",
+        "hint": "System One 请求中使用的 TypeSafe 模型 ID。这是 TypeSafe 的模型 ID，不是 KiraAI 的提供商模型。"
+      }
+    }
+  },
+  "threshold": {
+    "name": "Reply Threshold",
+    "type": "float",
+    "default": 0.5,
+    "hint": "A reply is triggered when the noul probability (0-1) for 'should reply' is at least this value.",
+    "locales": {
+      "zh": {
+        "name": "回复阈值",
+        "hint": "noul 概率（0-1）不低于该值时触发回复。"
+      }
+    }
+  },
+  "history_limit": {
+    "name": "History Message Limit",
+    "type": "integer",
+    "default": 20,
+    "hint": "Maximum archived records to query before the current message (1-200, default 20). Out-of-range values are clamped; invalid values use 20. Filtering and the character budget may reduce the number included.",
+    "locales": {
+      "zh": {
+        "name": "历史消息条数上限",
+        "hint": "查询当前消息之前的归档记录数量上限（1-200，默认 20）。超出范围时限制到边界值，无效值使用 20。过滤和字符预算可能使实际传入条数更少。"
+      }
+    }
+  },
+  "conversation_budget": {
+    "name": "Context Char Budget",
+    "type": "integer",
+    "default": 12000,
+    "hint": "Character budget for recent archived messages read through ctx.message_history into state.conversation. Set 0 to skip history queries; the current message and active persona are still sent.",
+    "locales": {
+      "zh": {
+        "name": "上下文字符预算",
+        "hint": "通过 ctx.message_history 读取的近期归档消息在 state.conversation 中的字符预算，从最新消息往前截取。设为 0 时跳过历史查询，仍发送当前消息和激活人设。"
+      }
+    }
+  },
+  "timeout": {
+    "name": "Judge Timeout (s)",
+    "type": "float",
+    "default": 8.0,
+    "hint": "Maximum seconds to wait for the System One API; on timeout or error the message stays unmentioned. No retries to avoid message backlog.",
+    "locales": {
+      "zh": {
+        "name": "判定超时（秒）",
+        "hint": "等待 System One 接口响应的最长时间，超时或出错时该消息按未提及处理。不重试以避免消息积压。"
+      }
+    }
+  },
+  "group_judge_prompt": {
+    "name": "Group Judge Prompt",
+    "type": "textarea",
+    "default": "state.conversation 是本会话近期消息（按时间从早到晚），state.target 是当前这条消息。\n你在判断聊天机器人此刻要不要说话，而不是生成回复。\n判定参考：消息明确指向机器人（@机器人、叫机器人的名字、回应机器人刚说过的话），或是在向机器人提问、求助、请求做事时更接近 1；群友之间的普通闲聊、与机器人无关时更接近 0。\n机器人应该回复当前这条消息吗？",
+    "hint": "noul instructions for group messages. Active persona name and content are sent in state.persona without chat rules. Persona-context guidance and a prompt-injection guard are appended automatically.",
+    "locales": {
+      "zh": {
+        "name": "群聊判定提示词",
+        "hint": "群聊消息的 noul 判定指令。state.persona 自动传入当前激活人设的名称和正文，不包含聊天规则。末尾会自动附加人设字段说明和提示注入防护。"
+      }
+    }
+  },
+  "private_judge_prompt": {
+    "name": "Private Judge Prompt",
+    "type": "textarea",
+    "default": "state.target 是用户当前发来的消息。\n你在判断聊天机器人此刻要不要回复，而不是生成回复。\n判定参考：正常交谈、提问、求助时更接近 1；广告、诈骗、无意义刷屏时更接近 0。\n机器人应该回复当前这条消息吗？",
+    "hint": "noul instructions for private messages. Active persona name and content are sent in state.persona without chat rules. Persona-context guidance and a prompt-injection guard are appended automatically.",
+    "locales": {
+      "zh": {
+        "name": "私聊判定提示词",
+        "hint": "私聊消息的 noul 判定指令。state.persona 自动传入当前激活人设的名称和正文，不包含聊天规则。末尾会自动附加人设字段说明和提示注入防护。"
+      }
+    }
+  }
+}
