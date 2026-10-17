@@ -4,6 +4,7 @@
     "core_version": ">=3.0.0",
     "version": "1.2.1",
     "author": "Caleb",
+    "repo": "https://github.com/xxynet/kira-ai-plugin-jev",
     "description": "Judges every incoming message with TypeSafe's jev-latest System One model via its native API before the chat plugin runs, and marks messages worth replying to as mentioned.",
     "tags": ["chat", "hook"],
     "locales": {
