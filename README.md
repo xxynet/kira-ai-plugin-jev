@@ -1,5 +1,7 @@
 # kira-ai-plugin-jev
 
+English | [简体中文](README.zh-CN.md)
+
 Judges every incoming message with TypeSafe's **Jev** model and marks messages
 worth replying to as mentioned, so the chat plugin picks them up.
 
@@ -24,7 +26,7 @@ for "should the bot reply") directly.
     judgement so persona switches take effect immediately. Global, private,
     and group chat rules are never included in this field;
   - `state.target` — the current message as `发送者：内容〔群聊：群名〕`
-    (or `〔私聊〕`), truncated to 2000 chars;
+    (or `〔私聊〕`), with the message body truncated to 2000 chars;
   - `state.conversation` — recent archived session messages within a
     12000-char budget, retaining the newest lines in chronological order.
     By default, up to 20 records are read asynchronously through
@@ -101,6 +103,7 @@ Status hints are troubleshooting guidance, not proof of the upstream cause.
 Errors preserve the mention flag and are not retried. Logs contain the status and
 locally defined hint, without response bodies, request contents, or credentials.
 See the [official API reference](https://docs.typesafe.ai/api) for status meanings.
+
 ## Local development
 
 This is a KiraAI plugin, not a standalone application. It requires Python 3.10+
